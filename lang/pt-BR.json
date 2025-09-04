@@ -1,0 +1,25 @@
+{
+  "PE": {
+    "AmmoCapacity": "Capacidade de Munição",
+    "AmmoType": "Tipo de Munição",
+    "AmmoCurrent": "Munição Atual",
+    "Reload": "Recarregar",
+    "NoAmmo": "Você está sem munição para {name}!",
+    "NoAmmoType": "Esta arma não tem um tipo de munição definido.",
+    "NoAmmoItem": "Você não tem nenhuma munição do tipo {ammoType} no seu inventário.",
+    "NoAmmoAvailable": "Você não tem munição para recarregar.",
+    "AlreadyLoaded": "A arma já está com a carga máxima.",
+    "Reloaded": "{amount} munições de {ammoType} recarregadas com sucesso em {name}.",
+    "IsAmmunition": "É Munição?",
+    "EquipmentType": "Tipo do Equipamento",
+    "Ammunition": "Munição",
+    "Illumination": "Iluminação",
+    "AmmoQuantity": "Quantidade da Munição",
+    "DimLightDistance": "Distância de Luz Fraca",
+    "BrightLightDistance": "Distância de Luz Intensa",
+    "LightColor": "Cor da Luz",
+    "LightAngle": "Ângulo da Luz",
+    "TurnOn": "Ligar",
+    "TurnOff": "Desligar"
+  }
+}
