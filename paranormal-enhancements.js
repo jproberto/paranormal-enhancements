@@ -1,53 +1,41 @@
-/*****************************************************
- * Paranormal Enhancements (for Ordem Paranormal)
- * Main entrypoint
- *****************************************************/
-
-// Import only the handlers that are directly registered in the hooks
 import { renderItemSheetHandler } from "./features/item-sheet-handler.js";
-import { renderChatCardHandler } from "./features/chat-handler.js"; 
-import { wrapRollAttack } from "./features/armament-handler.js";
+import { renderChatCardHandler } from "./features/chat-handler.js";
+import { wrapRollAttack, wrapRollDamage } from "./features/armament-handler.js";
 
-// Log functions exported for use in other modules
 export const log = (...args) => console.log("paranormal-enhancement |", ...args);
-export const debug = (...args) => console.debug("paranormal-enhancement |", ...args);
 export const warn = (...args) => console.warn("paranormal-enhancement |", ...args);
 export const error = (...args) => console.error("paranormal-enhancement |", ...args);
 
-/**
- * Main class to organize hooks and module initialization.
- */
-class ParanormalEnhancement {
-    static init() {
-        log("Initializing module.");
+Hooks.once('init', () => {
+    log("Initializing module.");
 
-        // Register hooks to handle sheet and chat message rendering
-        Hooks.on("renderOrdemItemSheet", renderItemSheetHandler);
-        Hooks.on("renderChatMessage", renderChatCardHandler);
+    // Check for libWrapper module
+    if (!game.modules.get('lib-wrapper')?.active && game.user.isGM) {
+        warn("The 'lib-wrapper' module is not active. Some features may not work correctly.");
     }
 
-    static ready() {
-        // Register the wrapper for the attack roll, checking if libWrapper is active.
-        if (game.modules.get('lib-wrapper')?.active) {
-            libWrapper.register(
-                "paranormal-enhancements", 
-                "CONFIG.Item.documentClass.prototype.rollAttack", 
-                wrapRollAttack, 
-                "MIXED"
-            );
-            log("libWrapper registration for rollAttack is complete.");
-        } else {
-            warn("libWrapper is not active. The rollAttack functionality will not work.");
-        }
-        
-        log("Module is ready.");
+    // Register hooks
+    Hooks.on("renderOrdemItemSheet", renderItemSheetHandler);
+    Hooks.on("renderChatMessage", renderChatCardHandler);
+
+    // Register libWrapper mixins if active
+    if (game.modules.get('lib-wrapper')?.active) {
+        libWrapper.register(
+            "paranormal-enhancements", 
+            "CONFIG.Item.documentClass.prototype.rollAttack", 
+            wrapRollAttack, 
+            "MIXED"
+        );
+        libWrapper.register(
+            "paranormal-enhancements", 
+            "CONFIG.Item.documentClass.prototype.rollDamage", 
+            wrapRollDamage, 
+            "MIXED"
+        );
     }
-}
-
-Hooks.on('init', () => {
-    ParanormalEnhancement.init();
 });
 
-Hooks.on("ready", () => {
-    ParanormalEnhancement.ready();
+Hooks.once('ready', () => {
+    log("Module is ready.");
 });
+

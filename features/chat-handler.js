@@ -1,106 +1,163 @@
-import { log } from "../paranormal-enhancements.js";
 import { toggleIllumination } from "./illumination-handler.js";
 import { reloadWeapon } from "./armament-handler.js";
+import { checkBattery, rechargeBattery } from "./battery-handler.js";
 
 /**
- * Main handler for chat message rendering.
- * Acts as a dispatcher to apply specific enhancements based on item type.
- * @param {ChatMessage} chatMessage The ChatMessage document.
- * @param {jQuery} html The jQuery object for the message HTML.
+ * Main handler for rendering chat messages, delegating to specific item type handlers.
+ * @param {ChatMessage} chatMessage The ChatMessage document instance.
+ * @param {jQuery} html The jQuery object of the message HTML.
  * @param {object} data The data object for the message.
  */
 export function renderChatCardHandler(chatMessage, html, data) {
-    // A more robust way is to get the item directly from the actor.
-    const actor = game.actors.get(chatMessage.speaker.actor);
+    const chatCard = html.find(".item-card");
+    if (chatCard.length === 0) return;
+
+    const actorId = chatCard.data("actor-id");
+    const itemId = chatCard.data("item-id");
+    
+    if (!actorId || !itemId) return;
+
+    const actor = game.actors.get(actorId);
     if (!actor) return;
 
-    // The item ID is stored in a data attribute on the card.
-    const card = $(html).find('.item-card[data-item-id]');
-    if (!card.length) return;
-
-    const itemId = card.data('item-id');
     const item = actor.items.get(itemId);
     if (!item) return;
 
-    // Now we use the up-to-date item data for all checks.
-    const itemType = item.getFlag("paranormal-enhancements", "itemType");
-    const isRangedWeapon = item.type === "armament" && item.system?.types?.rangeType?.name === "ranged";
-
-    if (itemType === "illumination") {
-        _handleIlluminationItem($(html), item, chatMessage);
-    } else if (isRangedWeapon) {
-        _handleArmamentItem($(html), item);
+    // Delegate to specific handlers based on item type
+    if (item.type === "generalEquipment") {
+        _handleGeneralEquipmentItem(html, item);
+    } else if (item.type === "armament") {
+        _handleArmamentItem(html, item);
     }
 }
 
 /**
- * Handles adding UI elements for illumination items.
- * @param {jQuery} html The jQuery object for the message HTML.
- * @param {Item} item The full Item document from the actor.
- * @param {ChatMessage} chatMessage The ChatMessage document.
+ * Handles UI modifications for General Equipment items.
+ * @param {jQuery} html The jQuery object of the message HTML.
+ * @param {Item} item The item document.
  */
-function _handleIlluminationItem(html, item, chatMessage) {
-    log(`Rendering chat card for illumination item: ${item.name}`);
-    const cardButtons = html.find(".card-buttons");
-    if (cardButtons.length === 0) return;
+function _handleGeneralEquipmentItem(html, item) {
+    const customButtonsContainer = $('<div class="custom-buttons-container"></div>');
 
-    const lightData = item.getFlag("paranormal-enhancements", "light") || {};
-    const isOn = lightData.isOn || false;
-    const buttonText = isOn ? game.i18n.localize("PE.TurnOff") : game.i18n.localize("PE.TurnOn");
+    // Handle illumination controls
+    const itemType = item.getFlag("paranormal-enhancements", "itemType");
+    if (itemType === "illumination") {
+        _addIlluminationControls(customButtonsContainer, item);
+    }
 
-    const button = $(`<button type="button" class="pe-toggle-light-btn" data-item-id="${item.id}">${buttonText}</button>`);
-    cardButtons.append(button);
+    // Handle battery controls
+    const batteryData = item.getFlag("paranormal-enhancements", "battery") || {};
+    if (batteryData.uses) {
+        _addBatteryControls(customButtonsContainer, item);
+    }
 
-    button.on("click", (event) => _onToggleButtonClick(event, chatMessage));
+    // If we added any buttons, append the container to the card
+    if (customButtonsContainer.children().length > 0) {
+        html.find(".card-footer").before(customButtonsContainer);
+    }
 }
 
 /**
- * Handles adding UI elements for armament items.
- * @param {jQuery} html The jQuery object for the message HTML.
- * @param {Item} item The full Item document.
+ * Adds the toggle button for illumination items to a container.
+ * @param {jQuery} container The jQuery container to append the button to.
+ * @param {Item} item The item document.
+ */
+function _addIlluminationControls(container, item) {
+    const lightData = item.getFlag("paranormal-enhancements", "light") || {};
+    const buttonLabel = lightData.isOn ? game.i18n.localize("PE.TurnOff") : game.i18n.localize("PE.TurnOn");
+    const buttonIcon = lightData.isOn ? "fa-solid fa-lightbulb" : "fa-regular fa-lightbulb";
+
+    const toggleButton = $(`
+        <div class="card-buttons" style="margin-top: 5px;">
+            <button data-action="toggle-light">
+                <i class="${buttonIcon}"></i> ${buttonLabel}
+            </button>
+        </div>
+    `);
+
+    toggleButton.find('button').on('click', async (ev) => {
+        ev.preventDefault();
+        await toggleIllumination(item.actor.id, item.id);
+    });
+
+    container.append(toggleButton);
+}
+
+/**
+ * Adds the battery control buttons for items that use them to a container.
+ * @param {jQuery} container The jQuery container to append the buttons to.
+ * @param {Item} item The item document.
+ */
+function _addBatteryControls(container, item) {
+    const batteryButtons = $(`
+        <div class="card-buttons" style="margin-top: 5px; display: flex; gap: 5px;">
+            <button data-action="check-battery" style="flex: 1;">
+                <i class="fa-solid fa-battery-half"></i> ${game.i18n.localize("PE.CheckBattery")}
+            </button>
+            <button data-action="recharge-battery" style="flex: 1;">
+                <i class="fa-solid fa-bolt"></i> ${game.i18n.localize("PE.Recharge")}
+            </button>
+        </div>
+    `);
+
+    batteryButtons.find('button[data-action="check-battery"]').on('click', (ev) => {
+        ev.preventDefault();
+        checkBattery(item);
+    });
+
+    batteryButtons.find('button[data-action="recharge-battery"]').on('click', (ev) => {
+        ev.preventDefault();
+        rechargeBattery(item);
+    });
+
+    container.append(batteryButtons);
+}
+
+
+/**
+ * Handles UI modifications for Armament items.
+ * @param {jQuery} html The jQuery object of the message HTML.
+ * @param {Item} item The item document.
  */
 function _handleArmamentItem(html, item) {
-    log(`Rendering chat card for armament item: ${item.name}`);
+    const isRangedWeapon = item.system.types?.rangeType?.name === "ranged";
+    if (!isRangedWeapon) return;
+    
     const ammoData = item.getFlag("paranormal-enhancements", "ammo");
     if (!ammoData) return;
 
+    _addAmmoUI(html, item, ammoData);
+}
+
+/**
+ * Creates and injects the ammo count and reload button UI.
+ * @param {jQuery} html The jQuery object of the message HTML.
+ * @param {Item} item The item document.
+ * @param {object} ammoData The ammo data from flags.
+ */
+function _addAmmoUI(html, item, ammoData) {
     const cardButtons = html.find(".card-buttons");
     const cardFooter = html.find(".card-footer");
-    const ammunitionType = item.system.types.ammunitionType;
 
-    const ammoInfo = $(`
+    const ammoInfoContainer = $(`
         <div style="text-align: center; font-size: 14px; margin-top: 10px; font-weight: bold;">
             ${game.i18n.localize("PE.AmmoCurrent")}: ${ammoData.current}/${ammoData.max}
         </div>
     `);
-    cardFooter.before(ammoInfo);
-
+    cardFooter.before(ammoInfoContainer);
+    
+    const ammunitionType = item.system.types.ammunitionType;
     if (cardButtons.length && ammunitionType) {
-        const reloadContainer = $(`<div class="card-buttons" style="margin-top: 5px;"></div>`);
+        const reloadButtonContainer = $(`<div class="card-buttons" style="margin-top: 5px;"></div>`);
         const reloadButton = $(`<button data-action="reload" style="flex-grow: 1;"><i class="fa-solid fa-sync"></i> ${game.i18n.localize("PE.Reload")}</button>`);
         
-        reloadContainer.append(reloadButton);
-        cardButtons.after(reloadContainer);
+        reloadButtonContainer.append(reloadButton);
+        cardButtons.after(reloadButtonContainer);
         
-        reloadButton.click(() => reloadWeapon(item));
+        reloadButton.on('click', (ev) => {
+            ev.preventDefault();
+            reloadWeapon(item);
+        });
     }
 }
 
-/**
- * Handles the toggle button click for illumination items.
- * @param {Event} event The click event.
- * @param {ChatMessage} chatMessage The associated chat message.
- */
-async function _onToggleButtonClick(event, chatMessage) {
-    event.preventDefault();
-    const button = $(event.currentTarget);
-    const itemId = button.data("itemId");
-    const actorId = chatMessage.speaker.actor;
-
-    if (!actorId || !itemId) return;
-
-    const newState = await toggleIllumination(actorId, itemId);
-    if (newState !== null) {
-        button.text(newState ? game.i18n.localize("PE.TurnOff") : game.i18n.localize("PE.TurnOn"));
-    }
-}

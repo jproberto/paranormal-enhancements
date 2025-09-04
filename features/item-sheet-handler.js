@@ -58,6 +58,32 @@ function _renderArmamentFields(app, $html, data) {
  * Orchestrates the rendering of custom fields for general equipment.
  */
 function _renderEquipmentFields(app, $html, data) {
+    const generalAttrTab = $html.find(".tab[data-tab='generalAttr']");
+    generalAttrTab.css("overflow-y", "auto");
+    const existingFields = generalAttrTab.find(".resource");
+
+    // --- Battery Fields ---
+    const batteryData = app.item.getFlag("paranormal-enhancements", "battery") || {};
+    const usesBattery = batteryData.uses ?? false;
+    const isPotent = batteryData.isPotent ?? false;
+
+    const batteryFieldsHTML = `
+        <div class="resource">
+            <div class="form-fields" style="display: flex; align-items: center; gap: 1rem;">
+                <label class="resource-label" for="uses-battery-checkbox">${game.i18n.localize("PE.UsesBattery")}</label>
+                <input id="uses-battery-checkbox" type="checkbox" name="flags.paranormal-enhancements.battery.uses" ${usesBattery ? 'checked' : ''} style="margin: 0; flex: 0;"/>
+                
+                <div class="form-fields potent-battery-field" style="display: ${usesBattery ? 'flex' : 'none'}; align-items: center; gap: 0.5rem;">
+                    <label class="resource-label" for="potent-battery-checkbox">${game.i18n.localize("PE.PotentBattery")}</label>
+                    <input id="potent-battery-checkbox" type="checkbox" name="flags.paranormal-enhancements.battery.isPotent" ${isPotent ? 'checked' : ''} style="margin: 0; flex: 0;"/>
+                </div>
+            </div>
+        </div>
+    `;
+    const $batteryFields = $(batteryFieldsHTML);
+    existingFields.first().before($batteryFields);
+
+    // --- Item Type Fields ---
     const itemType = app.item.getFlag("paranormal-enhancements", "itemType") || "none";
     const equipmentTypeSelect = $(`
         <div class="resource grid align-items-center">
@@ -71,16 +97,10 @@ function _renderEquipmentFields(app, $html, data) {
             </div>
         </div>
     `);
-
-    const generalAttrTab = $html.find(".tab[data-tab='generalAttr']");
-    // FIX: Make the entire tab scrollable, which is more robust than a fixed-height div.
-    generalAttrTab.css("overflow-y", "auto");
-
-    const existingFields = generalAttrTab.find(".resource");
     
-    existingFields.first().after(equipmentTypeSelect);
+    $batteryFields.last().after(equipmentTypeSelect);
     
-    // This container is now just for grouping, not for styling the scrollbar.
+    // --- Dynamic Fields for Item Type ---
     const injectedFieldsContainer = $(`<div class="injected-fields-container"></div>`);
     equipmentTypeSelect.after(injectedFieldsContainer);
 
@@ -97,6 +117,14 @@ function _renderEquipmentFields(app, $html, data) {
 
     updateFields();
     equipmentTypeSelect.find('select').change(updateFields);
+
+    // --- Event Listener for Battery Checkbox ---
+    const usesBatteryCheckbox = generalAttrTab.find('input[name="flags.paranormal-enhancements.battery.uses"]');
+    const potentBatteryField = generalAttrTab.find('.potent-battery-field');
+
+    usesBatteryCheckbox.on('change', (event) => {
+        potentBatteryField.toggle(event.currentTarget.checked);
+    });
 }
 
 /**
@@ -135,8 +163,9 @@ function _renderIlluminationFields(app, container) {
         </div>
         <div class="resource grid align-items-center">
             <label class="resource-label">${game.i18n.localize("PE.LightColor")}</label>
-            <div class="form-fields">
-                <input type="text" name="flags.paranormal-enhancements.light.color" value="${lightData.color ?? ''}" data-dtype="String"/>
+            <div class="form-fields" style="display: flex; align-items: center; gap: 5px;">
+                <input class="color" type="text" name="flags.paranormal-enhancements.light.color" value="${lightData.color ?? '#ffffff'}"/>
+                <input type="color" value="${lightData.color ?? '#ffffff'}" style="min-width: 30px; min-height: 24px; padding: 0;">
             </div>
         </div>
         <div class="resource grid align-items-center">
@@ -147,4 +176,14 @@ function _renderIlluminationFields(app, container) {
         </div>
     `);
     container.append(lightFields);
+
+    const colorTextInput = container.find('input[type="text"][name="flags.paranormal-enhancements.light.color"]');
+    const colorPickerInput = colorTextInput.next('input[type="color"]');
+    
+    if (colorPickerInput.length) {
+        colorPickerInput.on('input', (event) => {
+            colorTextInput.val(event.currentTarget.value);
+        });
+    }
 }
+

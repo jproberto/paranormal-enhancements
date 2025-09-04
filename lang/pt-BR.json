@@ -20,6 +20,14 @@
     "LightColor": "Cor da Luz",
     "LightAngle": "Ângulo da Luz",
     "TurnOn": "Ligar",
-    "TurnOff": "Desligar"
+    "TurnOff": "Desligar",
+    "UsesBattery": "Usa Bateria?",
+    "PotentBattery": "Bateria Potente?",
+    "CheckBattery": "Checar Bateria",
+    "Recharge": "Recarregar",
+    "BatteryCheckedSuccess": "{name} ainda tem bateria. Próximo teste: {die}.",
+    "BatteryCheckedFailure": "A bateria de {name} acabou!",
+    "BatteryAlreadyDead": "A bateria de {name} já está esgotada.",
+    "ItemRecharged": "{name} foi recarregado. O dado de bateria voltou para d20."
   }
 }

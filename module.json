@@ -1,7 +1,7 @@
 {
   "id": "paranormal-enhancements",
-  "title": "Paranormal Enhancements",
-  "description": "Adds item enhancements such as ammo tracking and flashlights for Ordem Paranormal system.",
+  "title": "JP's Paranormal Enhancements",
+  "description": "Adds item enhancements for the Ordem Paranormal system, including ammo tracking, battery management, flashlights, and custom critical damage.",
   "version": "1.0.0",
   "authors": [
     {
