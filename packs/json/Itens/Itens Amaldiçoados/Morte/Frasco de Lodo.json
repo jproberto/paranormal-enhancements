@@ -1,0 +1,49 @@
+{
+  "folder": "6ZBGMnnBdBqt4Yfi",
+  "name": "Frasco de Lodo",
+  "type": "generalEquipment",
+  "_id": "HtV5fzO8pv6jfFN0",
+  "img": "imagens/itens/Frasco%20de%20Lodo.png",
+  "system": {
+    "description": "<p>Um pequeno frasco contendo Lodo da Morte.</p><p>Aplicar o conteúdo do frasco em um ferimento é uma ação padrão.</p><ul><li>Se aplicado em um ferimento recente (até 1 rodada), recupera [[/roll 6d8+20]] pontos de vida.</li><li><p>Se aplicado em um ferimento antigo:</p><ul><li><p>Primeiramente role [[/roll 3d8+10]]. Depois role [[/roll 1d2]].</p><ul><li>Resultado 1: recupere o valor rolado como pontos de vida.</li><li>Resultado 2: receba o valor rolado como dano de Morte.</li></ul></li></ul></li></ul>",
+    "weight": 0.2,
+    "category": "2",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "type": "",
+    "quantity": 1
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "battery": {
+        "uses": false,
+        "isPotent": false
+      },
+      "itemType": "none",
+      "curse": {
+        "active": true,
+        "element": "Death"
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1769804657425,
+    "modifiedTime": 1769805541801,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!HtV5fzO8pv6jfFN0"
+}

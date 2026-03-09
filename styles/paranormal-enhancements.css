@@ -1,0 +1,187 @@
+/* Espaçamento entre os seletores do topo */
+.pe-selectors {
+    margin-bottom: 15px;
+}
+
+.pe-checkbox-group {
+    margin-top: 5px;
+}
+
+/* O container do preview com um respiro interno */
+.pe-preview-container {
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Cabeçalho com Elemento e Círculo nas pontas */
+.pe-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+/* Grid de duas colunas para as estatísticas */
+.pe-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 15px;
+    font-size: 0.9em;
+}
+
+.pe-full-row {
+    grid-column: 1 / -1;
+}
+
+/* Caixa de descrição com separação visual */
+.pe-description-box {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dotted rgba(0, 0, 0, 0.2);
+    font-style: italic;
+    line-height: 1.4;
+    min-height: 50px;
+}
+
+/* Footer com o custo alinhado à direita */
+.pe-footer {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 1.1em;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+}
+
+.pe-button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pe-btn {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: "Varino", sans-serif;
+    display: flex;
+    flex-direction: row; /* Alinha ícone e texto lado a lado */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #444;
+    border-radius: 4px;
+    transition: background 0.2s;
+    height: 40px; /* Altura fixa para manter a simetria */
+}
+
+.pe-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.pe-btn i {
+    font-size: 1em; /* Tamanho do ícone ajustado para a linha */
+}
+
+.pe-chat-card {
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.pe-chat-title {
+    border-bottom: 2px solid #700; /* Um detalhe em vermelho "paranormal" */
+    margin-bottom: 5px;
+}
+
+.pe-chat-header {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.pe-chat-stats p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.pe-chat-description {
+    margin-top: 8px;
+    padding-top: 5px;
+    border-top: 1px dotted #ccc;
+    font-style: italic;
+}
+
+.pe-chat-footer {
+    text-align: right;
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+.pe-weapon-selection-dialog {
+    height: auto !important;
+}
+
+.pe-weapon-selection-dialog .window-content {
+    height: auto !important;
+}
+
+.pe-weapon-selection-dialog .dialog-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.pe-weapon-button-content span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pe-weapon-selection-dialog .dialog-button {
+    height: auto;
+    padding: 6px;
+}
+
+.pe-weapon-button-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.pe-weapon-button-content img {
+    border: none;
+    flex-shrink: 0;
+}
+
+.pe-active-rituals-container .pe-active-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 40px;
+    font-weight: bold;
+    border-bottom: 1px solid #7a7971;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.pe-ritual-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 40px;
+    align-items: center;
+    padding: 3px 0;
+}
+
+.pe-btn-terminate {
+    background: none;
+    border: none;
+    color: #ce1111;
+    cursor: pointer;
+}

@@ -1,0 +1,49 @@
+{
+  "folder": "HjN9XGdls2LOiYKZ",
+  "name": "Anel do Elo Mental",
+  "type": "generalEquipment",
+  "_id": "Ts2SrPtcTMZ3KdCE",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Um pesado anel de ouro maciço, visivelmente antigo e artesanal, mas em perfeito estado de conservação. Em sua superfície externa, sigilos de Conhecimento podem ser vistos, bem como o símbolo do ritual \"Invadir Mente\", levemente modificado.</p><p><strong>Ativação:</strong> Duas pessoas devem voluntariamente usar um anel cada durante uma Cena de Interlúdio para criar o vínculo.</p><p>Enquanto o efeito estiver ativo, os benefícios e malefícios são os seguintes:</p><ul><li><p><strong>Vínculo Telepático:</strong> Os dois usuários estão conectados por uma ligação telepática, podendo se comunicar mentalmente independentemente da distância.</p></li><li><p><strong>Vontade Partilhada:</strong> Para qualquer teste de Vontade, ambos os usuários utilizam a melhor quantidade de dados e bônus entre os dois.</p></li><li><p><strong>Dor Partilhada:</strong> Sempre que um dos usuários sofrer dano mental, o outro imediatamente sofre a mesma quantidade de dano. Adicionalmente, qualquer condição mental ou de medo que afetar um deles automaticamente afetará o outro.</p></li></ul>",
+    "weight": 0,
+    "category": "2",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "type": "",
+    "quantity": 1
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "battery": {
+        "uses": false,
+        "isPotent": false
+      },
+      "itemType": "none",
+      "curse": {
+        "active": true,
+        "element": "Knowledge"
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1759370760345,
+    "modifiedTime": 1759370773304,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!Ts2SrPtcTMZ3KdCE"
+}

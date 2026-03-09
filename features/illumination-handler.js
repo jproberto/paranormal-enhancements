@@ -24,8 +24,6 @@ export async function toggleIllumination(actorId, itemId) {
 
     await item.setFlag("paranormal-enhancements", "light.isOn", newState);
 
-    // --- FIX: Improved token finding logic ---
-    // Prioritize the controlled token, then fall back to any token for that actor on the current scene.
     let token = canvas.tokens.controlled.find(t => t.document.actorId === actor.id);
     if (!token) {
         token = canvas.tokens.placeables.find(t => t.document.actorId === actor.id);
@@ -33,19 +31,14 @@ export async function toggleIllumination(actorId, itemId) {
 
     if (!token) {
         ui.notifications.warn(game.i18n.localize("PE.NoToken"));
-        // The item state was updated, so we return the new state
-        // even if the token couldn't be found on the current canvas.
         return newState;
     }
 
     let lightUpdate = {};
-    if (newState) { // Turning ON
-        log(`Turning on light for token ${token.name}`);
-        
+    if (newState) { 
         const dim = lightData.dim ?? 0;
         const bright = lightData.bright ?? 0;
 
-        // --- FIX: Ensure light has a radius, otherwise use defaults ---
         if (dim === 0 && bright === 0) {
             warn(`Item ${item.name} has no light radius configured. Using default values.`);
             lightUpdate = {
@@ -64,9 +57,7 @@ export async function toggleIllumination(actorId, itemId) {
                 animation: { type: "torch", speed: 2, intensity: 2 },
             };
         }
-    } else { // Turning OFF
-        log(`Turning off light for token ${token.name}`);
-        // --- FIX: Reset all light properties for a clean "off" state ---
+    } else { 
         lightUpdate = {
             dim: 0,
             bright: 0,

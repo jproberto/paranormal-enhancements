@@ -3,6 +3,7 @@
   "title": "JP's Paranormal Enhancements",
   "description": "Adds item enhancements for the Ordem Paranormal system, including ammo tracking, battery management, flashlights, and custom critical damage.",
   "version": "1.0.0",
+  "socket": true,
   "authors": [
     {
       "name": "JP Roberto",
@@ -15,7 +16,7 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/pt-BR.json"
     },
     {
       "lang": "pt-BR",
@@ -27,8 +28,145 @@
     "minimum": "13",
     "verified": "13"
   },
-  "esmodules": [
+  "styles": [
+    "styles/paranormal-enhancements.css"
+  ],"esmodules": [
     "paranormal-enhancements.js"
+  ],
+  "packs": [
+    {
+      "name": "arsenal",
+      "label": "Arsenal",
+      "system": "ordemparanormal",
+      "path": "packs/items/arsenal",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/arsenal.jpeg"
+    },
+    {
+      "name": "cursed",
+      "label": "Itens Amaldiçoados",
+      "system": "ordemparanormal",
+      "path": "packs/items/cursed",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/cursed.jpeg"
+    },
+    {
+      "name": "gear",
+      "label": "Equipamentos Gerais",
+      "system": "ordemparanormal",
+      "path": "packs/items/gear",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/gear.jpeg"
+    },
+    {
+      "name": "abilities-origin",
+      "label": "Habilidades de Origem",
+      "system": "ordemparanormal",
+      "path": "packs/abilities/origin",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/origin.jpeg"
+    },
+    {
+      "name": "abilities-class",
+      "label": "Habilidades de Classe",
+      "system": "ordemparanormal",
+      "path": "packs/abilities/class",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/class.jpeg"
+    },
+    {
+      "name": "abilities-path",
+      "label": "Habilidades de Trilha",
+      "system": "ordemparanormal",
+      "path": "packs/abilities/path",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/path.jpeg"
+    },
+    {
+      "name": "abilities-paranormal",
+      "label": "Poderes Paranormais",
+      "system": "ordemparanormal",
+      "path": "packs/abilities/paranormal",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/paranormal.jpeg"
+    },
+    {
+      "name": "abilities-others",
+      "label": "Outras Habilidades",
+      "system": "ordemparanormal",
+      "path": "packs/abilities/others",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/others.jpeg"
+    },
+    {
+      "name": "rituals-blood",
+      "label": "Rituais de Sangue",
+      "system": "ordemparanormal",
+      "path": "packs/rituals/blood",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/blood.jpeg"
+    },
+    {
+      "name": "rituals-knowledge",
+      "label": "Rituais de Conhecimento",
+      "system": "ordemparanormal",
+      "path": "packs/rituals/knowledge",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/knowledge.jpeg"
+    },
+    {
+      "name": "rituals-energy",
+      "label": "Rituais de Energia",
+      "system": "ordemparanormal",
+      "path": "packs/rituals/energy",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/energy.jpeg"
+    },
+    {
+      "name": "rituals-death",
+      "label": "Rituais de Morte",
+      "system": "ordemparanormal",
+      "path": "packs/rituals/death",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/death.jpeg"
+    },
+    {
+      "name": "rituals-fear",
+      "label": "Rituais de Medo",
+      "system": "ordemparanormal",
+      "path": "packs/rituals/fear",
+      "type": "Item",
+      "banner": "modules/paranormal-enhancements/assets/banners/fear.jpeg"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "JPPE Items",
+      "sorting": "a",
+      "packs": ["arsenal", "cursed", "gear"]
+    },
+    {
+      "name": "JPPE Abilities",
+      "sorting": "a",
+      "packs": [
+        "abilities-origin",
+        "abilities-class",
+        "abilities-path",
+        "abilities-paranormal",
+        "abilities-others"
+      ]
+    },
+    {
+      "name": "JPPE Rituals",
+      "sorting": "a",
+      "packs": [
+        "rituals-blood",
+        "rituals-knowledge",
+        "rituals-energy",
+        "rituals-death",
+        "rituals-fear"
+      ]
+    }
   ],
   "relationships": {
     "systems": [
@@ -45,6 +183,14 @@
         "compatibility": {
           "minimum": "1.12.0"
         }
+      }, 
+      {
+        "id": "sequencer",
+        "type": "module"
+      },
+      {
+        "id": "socketlib",
+        "type": "module"
       }
     ]
   },

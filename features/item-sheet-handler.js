@@ -8,9 +8,9 @@ export function renderItemSheetHandler(app, html, data) {
         return;
     }
 
-    log("Rendering item sheet for item:", data.item.name);
-
     const $html = $(html);
+
+    _renderCurseEffectFields(app, $html, data);
 
     if (app.item.type === "armament") {
         _renderArmamentFields(app, $html, data);
@@ -20,9 +20,25 @@ export function renderItemSheetHandler(app, html, data) {
 }
 
 /**
- * Injects ammo fields into the armament item sheet.
+ * Orchestrates the rendering of custom fields for armament items.
+ * This function acts as a dispatcher, calling specific handlers for each feature.
+ * @param {Application} app The application instance.
+ * @param {jQuery} $html The jQuery object for the sheet's HTML.
+ * @param {object} data The sheet data.
  */
 function _renderArmamentFields(app, $html, data) {
+    _injectAmmoFields(app, $html, data);
+    _injectAdaptableGripField(app, $html, data);
+}
+
+
+/**
+ * Injects ammo capacity and current ammo fields for ranged weapons.
+ * @param {Application} app The application instance.
+ * @param {jQuery} $html The jQuery object for the sheet's HTML.
+ * @param {object} data The sheet data.
+ */
+function _injectAmmoFields(app, $html, data) {
     const ammoData = app.item.getFlag("paranormal-enhancements", "ammo") || {};
     const isRangedWeapon = app.item.system.types?.rangeType?.name === "ranged";
 
@@ -52,6 +68,42 @@ function _renderArmamentFields(app, $html, data) {
 
     toggleAmmoFields();
     weaponTypeSelect.change(toggleAmmoFields);
+}
+
+
+/**
+ * Injects the "Two-Handed Damage" field, which is dynamically shown
+ * when the "Adaptable Grip" checkbox is checked.
+ * @param {Application} app The application instance.
+ * @param {jQuery} $html The jQuery object for the sheet's HTML.
+ * @param {object} data The sheet data.
+ */
+function _injectAdaptableGripField(app, $html, data) {
+    const adaptableGripCheckbox = $html.find('input[name="system.conditions.adaptableGrip"]');
+    if (adaptableGripCheckbox.length === 0) return;
+
+    const targetContainer = adaptableGripCheckbox.closest('.resource');
+
+    const twoHandedDamage = app.item.getFlag("paranormal-enhancements", "adaptableGrip.twoHandedDamage") || "";
+    const newFieldHTML = `
+        <div class="resource grid grid-2col adaptable-grip-damage-field">
+            <label class="resource-label">${game.i18n.localize("PE.AdaptableGrip.TwoHandedDamageLabel")}</label>
+            <div class="form-fields">
+                <input type="text" name="flags.paranormal-enhancements.adaptableGrip.twoHandedDamage" value="${twoHandedDamage}" />
+            </div>
+        </div>
+    `;
+    const $newField = $(newFieldHTML);
+
+    targetContainer.after($newField);
+
+    const toggleTwoHandedField = () => {
+        const isChecked = adaptableGripCheckbox.is(':checked');
+        $newField.toggle(isChecked);
+    };
+
+    toggleTwoHandedField();
+    adaptableGripCheckbox.on('change', toggleTwoHandedField);
 }
 
 /**
@@ -187,3 +239,49 @@ function _renderIlluminationFields(app, container) {
     }
 }
 
+async function _renderCurseEffectFields(app, $html, data) {
+    const effectsTab = $html.find(".tab[data-tab='effects']");
+    if (effectsTab.length === 0) return;
+
+    effectsTab.css("overflow-y", "auto");
+    
+    const curseData = app.item.getFlag("paranormal-enhancements", "curse") || {};
+    const curseElement = curseData.element ?? "";
+    const isCurseActive = curseData.active ?? false;
+    
+    const curseFieldsHTML = `
+        <fieldset class="resource-type curse-fields-wrapper">
+            <legend>${game.i18n.localize("PE.CurseTabTitle")}</legend>
+
+            <div class="resource">
+                <div class="form-fields" style="display: flex; align-items: center; gap: 1rem;">
+                    <label class="resource-label" for="curse-in-use-checkbox">${game.i18n.localize("PE.CurseInUse")}</label>
+                    <input id="curse-in-use-checkbox" type="checkbox" name="flags.paranormal-enhancements.curse.active" ${isCurseActive ? 'checked' : ''} style="margin: 0; flex: 0;"/>
+                </div>
+            </div>
+
+            <div class="resource curse-element-field">
+                <div class="form-fields" style="display: flex; align-items: center; gap: 1rem;">
+                    <label class="resource-label" for="curse-element-select">${game.i18n.localize("PE.CurseElement.Label")}</label>
+                    <select id="curse-element-select" name="flags.paranormal-enhancements.curse.element">
+                        <option value="" ${curseElement === '' ? 'selected' : ''}>${game.i18n.localize("PE.CurseElement.None")}</option>
+                        <option value="Blood" ${curseElement === 'Blood' ? 'selected' : ''}>${game.i18n.localize("PE.CurseElement.Blood")}</option>
+                        <option value="Death" ${curseElement === 'Death' ? 'selected' : ''}>${game.i18n.localize("PE.CurseElement.Death")}</option>
+                        <option value="Knowledge" ${curseElement === 'Knowledge' ? 'selected' : ''}>${game.i18n.localize("PE.CurseElement.Knowledge")}</option>
+                        <option value="Energy" ${curseElement === 'Energy' ? 'selected' : ''}>${game.i18n.localize("PE.CurseElement.Energy")}</option>
+                        <option value="Fear" ${curseElement === 'Fear' ? 'selected' : ''}>${game.i18n.localize("PE.CurseElement.Fear")}</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+    `;
+
+    effectsTab.append(curseFieldsHTML);
+
+    const curseFieldsWrapper = effectsTab.find('.curse-fields-wrapper');
+    const targetContainer = effectsTab.find('.content-item');
+
+    if (curseFieldsWrapper.length > 0 && targetContainer.length > 0) {
+        targetContainer.append(curseFieldsWrapper);
+    }
+}

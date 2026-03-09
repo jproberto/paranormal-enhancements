@@ -1,0 +1,46 @@
+{
+  "folder": "vB98PA99XhUPPC1o",
+  "name": "Balas Curtas",
+  "type": "generalEquipment",
+  "_id": "Q7eNbXLnXfOXJUqM",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Munição básica, usada em pistolas, revólveres e submetralhadoras. </p>",
+    "weight": 1,
+    "category": "0",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "type": "",
+    "quantity": 1
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "battery": {
+        "uses": false,
+        "isPotent": false
+      },
+      "itemType": "ammunition",
+      "ammoQuantity": 20
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1759347735203,
+    "modifiedTime": 1759347735203,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!Q7eNbXLnXfOXJUqM"
+}

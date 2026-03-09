@@ -1,0 +1,49 @@
+{
+  "folder": "6ZBGMnnBdBqt4Yfi",
+  "name": "Crânio Espiral",
+  "type": "generalEquipment",
+  "_id": "AdPdDJhz20CTgLBw",
+  "img": "imagens/itens/Cranio%20Espiral.png",
+  "system": {
+    "description": "<p>Um crânio envelhecido, apodrecido e distorcido em um formato espiral. Lodo escorre de seus olhos vazios, como lágrimas negras.</p><p>Uma vez por rodada, se estiver empunhando o crânio, você pode gastar uma ação livre para ativá-lo. Quando faz isso, você recebe uma ação padrão adicional na rodada. Sempre que usa o crânio, você deve fazer um teste de Vontade (DT 15 + 5 por uso adicional no mesmo dia). Se falhar, você recebe os benefícios do item, mas envelhece [[/roll 1d4]] anos e não pode mais usá-lo nesse dia.</p><p></p>",
+    "weight": 1,
+    "category": "2",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "type": "",
+    "quantity": 1
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "battery": {
+        "uses": false,
+        "isPotent": false
+      },
+      "itemType": "none",
+      "curse": {
+        "active": true,
+        "element": "Death"
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1770511662459,
+    "modifiedTime": 1770512524243,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!AdPdDJhz20CTgLBw"
+}
