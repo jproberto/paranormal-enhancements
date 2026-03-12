@@ -187,49 +187,4 @@ export class ChatService {
         burstButtonContainer.append(burstAttackButton).append(burstDamageButton);
         cardButtons.last().after(burstButtonContainer);
     }
-
-    /**
-     * Intercepts chat message creation to handle Ritual Pre-Create logic.
-     */
-    static handleRitualPreCreate(message, data, options, userId) {
-        if (userId !== game.user.id) return true;
-
-        if (message.getFlag("paranormal-enhancements", "isAuthorized")) return true;
-
-        const content = message.content || "";
-        const itemIdMatch = content.match(/data-item-id="([^"]+)"/);
-        if (!itemIdMatch) return true;
-
-        const itemId = itemIdMatch[1];
-        const actorId = message.speaker.actor;
-        const actor = FoundryAdapter.getActor(actorId);
-        
-        if (!actor) return true;
-
-        const item = actor.items.get(itemId);
-
-        if (item?.type === "ritual") {
-            ChatService._triggerRitualDialog(item, message);
-            return false;
-        }
-
-        return true; 
-    }
-
-    static async _triggerRitualDialog(item, message) {
-        // Dynamic import to avoid circular dependencies if Rituals are refactored later
-        const { getRitualClass } = await import("../../../features/ritual-handler.js");
-        const slug = item.name.slugify();
-        const ritualClass = await getRitualClass(slug);
-
-        if (!ritualClass) {
-            const messageData = message.toObject();
-            foundry.utils.setProperty(messageData, "flags.paranormal-enhancements.isAuthorized", true);
-            
-            return FoundryAdapter.createChatMessage(messageData);
-        }
-
-        const { showPreRollDialog } = await import("../../../features/rituals/ritual-ui.js");
-        showPreRollDialog(item, message, ritualClass);
-    }
 }

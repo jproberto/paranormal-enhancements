@@ -178,14 +178,6 @@
         "compatibility": {
           "minimum": "1.12.0"
         }
-      }, 
-      {
-        "id": "sequencer",
-        "type": "module"
-      },
-      {
-        "id": "socketlib",
-        "type": "module"
       }
     ]
   },

@@ -2,35 +2,18 @@ import { Logger } from "../utils/Logger.js";
 import { FoundryAdapter } from "../adapter/FoundryAdapter.js";
 
 // --- Legacy Imports (To be removed after full migration) ---
-import { registerRitualHandlers } from "../../../features/ritual-handler.js";
+
 
 // --- New Architecture Imports ---
 import { IlluminationController } from "../../application/controllers/IlluminationController.js";
 import { ItemSheetService } from "../../application/services/ItemSheetService.js";
 import { ChatService } from "../../application/services/ChatService.js";
 import { CurseController } from "../../application/controllers/CurseController.js";
-import { UIService } from "../../application/services/UIService.js";
 
 export class HookRegistry {
   static register() {
     Logger.log("Registering hooks...");
 
-    this._registerLegacyHooks();
-    this._registerNewHooks();
-  }
-
-  static _registerLegacyHooks() {
-
-    // Rituals (Legacy Handler)
-    registerRitualHandlers();
-
-    // Scene Controls (Active Rituals UI)
-    FoundryAdapter.registerHook("getSceneControlButtons", (controls) => {
-        UIService.registerSceneControls(controls);
-    });
-  }
-
-  static _registerNewHooks() {
     this._registerSheetHooks();
     this._registerChatHooks();
     this._registerRollHooks();
@@ -50,7 +33,7 @@ export class HookRegistry {
   }
 
   static _registerRollHooks() {
-      FoundryAdapter.registerHook("ordemparanormal.rollFormula", async (item, roll) => {
+      FoundryAdapter.registerHook("ordemparanormal.rollFormula", async (item) => {
           if (item?.getFlag("itemacro", "macro") && item.executeMacro) {
               await item.executeMacro();
           }
