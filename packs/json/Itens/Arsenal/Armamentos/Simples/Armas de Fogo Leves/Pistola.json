@@ -1,0 +1,79 @@
+{
+  "folder": "S7CVpz7GCYvXW9QA",
+  "name": "Pistola",
+  "type": "armament",
+  "_id": "bcZW9efv3IlLN2HM",
+  "img": "systems/ordemparanormal/media/icons/armament/Pistola.svg",
+  "system": {
+    "description": "<p>Uma pistola semiautomática de tamanho padrão, com um design funcional e sem adornos. A parte inferior do corpo (armação) é feita de polímero preto, enquanto a parte superior móvel (ferrolho) é de aço com um acabamento fosco e escurecido, mostrando leves sinais de desgaste nas bordas por ter sido sacada de um coldre.</p>",
+    "weight": 1,
+    "category": 0,
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "quantity": 1,
+    "proficiency": "",
+    "types": {
+      "rangeType": {
+        "name": "ranged",
+        "subRangeType": "fire"
+      },
+      "ammunitionType": "shortBullets",
+      "gripType": ""
+    },
+    "critical": "18/x2",
+    "range": "Curto",
+    "formulas": {
+      "attack": {
+        "formula": "1d4",
+        "attr": "dex",
+        "skill": "aim",
+        "bonus": ""
+      },
+      "damage": {
+        "formula": "1d12",
+        "attr": "",
+        "bonus": "",
+        "type": "ballisticDamage",
+        "parts": []
+      },
+      "extraFormula": "1d4"
+    },
+    "penalty": "",
+    "conditions": {
+      "improvised": false,
+      "throwable": false,
+      "agile": false,
+      "automatic": false,
+      "adaptableGrip": false,
+      "pistolBlow": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "ammo": {
+        "max": 12,
+        "current": 0
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1759347731368,
+    "modifiedTime": 1759369932981,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!bcZW9efv3IlLN2HM"
+}

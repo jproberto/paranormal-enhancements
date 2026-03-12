@@ -1,0 +1,79 @@
+{
+  "folder": "vGuHBfLXhZ23uxpe",
+  "name": "Fuzil de Assalto",
+  "type": "armament",
+  "_id": "kBiLjxdmvMQG23Ol",
+  "img": "systems/ordemparanormal/media/icons/armament/Fuzil%20de%20assalto.svg",
+  "system": {
+    "description": "<p>Um fuzil tático de corpo predominantemente negro, construído com uma mistura de polímero de alta resistência e metal fosco. O seletor de tiro com os ícones de modo seguro, intermitente e automático é visível acima do gatilho. Possui uma bandoleira acoplada. A arma exibe sinais de uso e manutenção cuidadosa, sem ser excessivamente desgastada.</p><p>É um arma automática e de saque rápido.</p>",
+    "weight": 2,
+    "category": "2",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "quantity": 1,
+    "proficiency": "tacticalWeapons",
+    "types": {
+      "rangeType": {
+        "name": "ranged",
+        "subRangeType": "fire"
+      },
+      "ammunitionType": "longBullets",
+      "gripType": "twoHands"
+    },
+    "critical": "19/x3",
+    "range": "Médio (18m)",
+    "formulas": {
+      "attack": {
+        "formula": "1d4",
+        "attr": "dex",
+        "skill": "aim",
+        "bonus": ""
+      },
+      "damage": {
+        "formula": "2d10",
+        "attr": "",
+        "bonus": "",
+        "type": "ballisticDamage",
+        "parts": []
+      },
+      "extraFormula": "1d4"
+    },
+    "penalty": "",
+    "conditions": {
+      "improvised": false,
+      "throwable": false,
+      "agile": false,
+      "automatic": true,
+      "adaptableGrip": false,
+      "pistolBlow": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "ammo": {
+        "max": 30,
+        "current": 0
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1759347731368,
+    "modifiedTime": 1759369986199,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!kBiLjxdmvMQG23Ol"
+}

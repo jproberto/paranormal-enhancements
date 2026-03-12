@@ -1,0 +1,49 @@
+{
+  "folder": "4l3eEMEEXmKfmznM",
+  "name": "Relógio do Contratempo",
+  "type": "generalEquipment",
+  "_id": "CkxHjqLCD2vEOjGj",
+  "img": "imagens/itens/Relogio%20do%20Contratempo.png",
+  "system": {
+    "description": "<p>Um relógio de bolso dourado, com uma borboleta em relevo na tampa. Os números de seu visor são em algarismos romanos e é possível ver algumas engrenagens de seu interior.</p><p></p><p>Uma vez por rodada, você pode gastar 1 PE para rolar novamente qualquer dado com o resultado 1. O custo para usar o relógio aumenta em +1 para cada vez que for ativado no mesmo dia.</p><p></p>",
+    "weight": 1,
+    "category": "2",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "type": "",
+    "quantity": 1
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "battery": {
+        "uses": false,
+        "isPotent": false
+      },
+      "itemType": "none",
+      "curse": {
+        "active": true,
+        "element": "Energy"
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1764210582143,
+    "modifiedTime": 1764210716764,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!CkxHjqLCD2vEOjGj"
+}

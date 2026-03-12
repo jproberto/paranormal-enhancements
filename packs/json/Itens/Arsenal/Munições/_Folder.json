@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": null,
+  "name": "Munições",
+  "color": null,
+  "sorting": "a",
+  "_id": "vB98PA99XhUPPC1o",
+  "description": "",
+  "sort": 200000,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1759347735200,
+    "modifiedTime": 1759347735209,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!folders!vB98PA99XhUPPC1o"
+}

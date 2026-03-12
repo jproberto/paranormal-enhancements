@@ -1,5 +1,6 @@
 {
   "PE": {
+    "And": "e",
     "AmmoCapacity": "Capacidade de Munição",
     "AmmoType": "Tipo de Munição",
     "AmmoCurrent": "Munição Atual",
@@ -28,6 +29,180 @@
     "BatteryCheckedSuccess": "{name} ainda tem bateria. Próximo teste: {die}.",
     "BatteryCheckedFailure": "A bateria de {name} acabou!",
     "BatteryAlreadyDead": "A bateria de {name} já está esgotada.",
-    "ItemRecharged": "{name} foi recarregado. O dado de bateria voltou para d20."
+    "ItemRecharged": "{name} foi recarregado. O dado de bateria voltou para d20.",
+    "BurstAttack": "Rajada",
+    "BurstDamage": "Dano de Rajada",
+        "AttackFlavor": "Atacou com {weapon}{context}",
+        "Warnings": {
+          "NoAttackFormula": "Este item não possui uma fórmula de ataque válida.",
+          "NoAmmoSystem": "Arma não está configurada com o sistema de munição.",
+          "NoAmmo": "{name} está sem munição!",
+          "NoAmmoForBurst": "{name} não tem munição suficiente para uma rajada! (Requer: {cost}, Atual: {current})"
+        },
+    "CurseTabTitle": "Maldições",
+    "CurseData": "Dados da Maldição",
+    "CurseInUse": "Maldição Ativa?",
+    "CurseElement": {
+      "Label": "Elemento da Maldição",
+      "None": "Nenhum",
+      "Blood": "Sangue",
+      "Death": "Morte",
+      "Knowledge": "Conhecimento",
+      "Energy": "Energia",
+      "Fear": "Medo"
+    },
+    "Curse": {
+      "CardTitle": "Maldição Paranormal",
+      "CardContent": "{actorName} possui itens amaldiçoados de <b>{elementName}</b>.",
+      "FailureReminder": "Caso tenha falhado no teste, a penalidade é uma perda de <b>{sanityLoss}</b> pontos de Sanidade."
+    },
+    "Damage": {
+      "Flavor": "Damage with {itemName}",
+      "FlavorCritical": "Critical Damage with {itemName}"
+    },
+    "SpecialItems": {
+      "CrackedArquebus": {
+        "ChatFlavor": "Rolando o efeito de <strong>{itemName}</strong>...",
+        "EffectRollDialog": {
+          "Title": "Ativar Arcabuz Fissurado",
+          "Content": "Deseja rolar o dado de efeito (1d6) para determinar o dano da arma?",
+          "Button": "Rolar 1d6"
+        },
+        "DamageRollDialog": {
+          "Title": "Efeito Determinado",
+          "Content": "O resultado do efeito foi <b>{effectResult}</b>. A arma causará <b>{damageFormula}</b> de dano base.",
+          "Button": "Rolar Dano"
+        }
+      }
+    },
+    "Dialog": {
+      "CancelButton": "Cancelar"
+    },
+    "AdaptableGrip": {
+      "TwoHandedDamageLabel": "Dano com 2 Mãos",
+      "DialogTitle": "Escolha de Empunhadura",
+      "DialogContent": "Como você está empunhando a arma?",
+      "Button1Hand": "1 Mão (Dano Padrão)",
+      "Button2Hands": "2 Mãos (Dano Alternativo)"
+    },
+    "Ritual": {
+      "Announce": "{actor} conjura {ritual}!",
+      "Cast": "Conjurar Ritual",
+      "Concentration": "Concentrando em {name}",
+      "DialogTitle": "{name}: Opções de Conjuração",
+      "VersionLabel": "Versão do Ritual",
+      "VersionBase": "Básica",
+      "VersionStudent": "Discente",
+      "VersionTrue": "Verdadeira",
+      "FullCast": "Conjuração Completa",
+      "Confirm": "Confirmar",
+      "Cancel": "Cancelar",
+      "NoTarget": "Você precisa selecionar um alvo para este ritual.",
+      "TooManyTargets": "Você deve selecionar apenas {number} alvo(s) para esse ritual.",
+      "NotImplemented": "Este ritual ainda não possui automação customizada.",
+      "NoWeapon": "Não foi selecionada nenhuma arma.",
+      "NoMeleeWeapon": "O alvo não possui armas corpo a corpo.",
+      "Execution": {
+        "Standard": "Padrão",
+        "Complete": "Completa"
+      },
+      "Range": {
+        "Touch": "Toque",
+        "Short": "Curto"
+      },
+      "Target": {
+        "Weapon": {
+          "Melee": "{number} arma(s) corpo a corpo",
+          "Ranged": "{number} arma(s) à distância"
+        }
+      },
+      "Duration": {
+        "Sustained": "Sustentada",
+        "Scene": "Cena"
+      },
+      "Version": {
+        "Base": "Básica",
+        "Student": "Discente",
+        "True": "Verdadeira"
+      },
+      "Button": {
+        "SpendPE": "Pagar PE",
+        "Roll": "Testar Ocultismo",
+        "Chat": "Mostrar no Chat",
+        "Cast": "Conjurar"
+      },
+      "Spend": {
+        "Title": "Pagar Custo de PE",
+        "Label": "Custo Final",
+        "Confirm": "Confirmar",
+        "ErrorInsufficient": "Você não possui Pontos de Esforço suficientes ({current}/{required})."
+      },
+      "Roll": {
+        "Title": "Teste de Ocultismo (DT {dt})",
+        "Success": "Sucesso! O ritual foi conjurado.",
+        "Failure": "Falha! Você perdeu {damage} de Sanidade.",
+        "Fumble": "Falha Crítica! Você perdeu {damage} de Sanidade (Custo + 50%).",
+        "Canceled": "Teste cancelado."
+      },
+      "Requirement": {
+        "Base": "Requer:",
+        "Affinity": "Afinidade",
+        "Circle": "{circle}º Círculo"
+      },
+      "Description": {
+        "arma-atroz": {
+          "Standard": {
+            "base": "A arma é recoberta por veias carmesim e passa a exalar uma aura de violência. Ela fornece +2 em testes de ataque e +1 na margem de ameaça.",
+            "student": "A arma é recoberta por veias carmesim e passa a exalar uma aura de violência. Ela fornece +5 em testes de ataque e +1 na margem de ameaça.",
+            "true": "A arma é recoberta por veias carmesim e passa a exalar uma aura de violência. Ela fornece +5 em testes de ataque, +2 na margem de ameaça e no multiplicador de crítico."
+          },
+          "Complete": {
+            "base": "A arma é recoberta por veias carmesim e passa a exalar uma aura de violência. Ela fornece +2 em testes de ataque e +1 na margem de ameaça.",
+            "student": "A arma é recoberta por veias carmesim e passa a exalar uma aura de violência. Ela fornece +5 em testes de ataque e +1 na margem de ameaça.",
+            "true": "A arma é recoberta por veias carmesim e passa a exalar uma aura de violência. Ela fornece +5 em testes de ataque, +2 na margem de ameaça e no multiplicador de crítico."
+          }
+        }
+      },
+      "ActiveRituals" : {
+        "Label": {
+          "Ritual": "Ritual",
+          "Target": "Alvo",
+          "Action": "Ação"
+        },
+        "Button": {
+          "Terminate": "Encerrar Ritual"
+        },
+        "NoActiveRituals": "Nenhum ritual ativo sob seu controle."
+      }
+    },
+    "Error": {
+      "MethodNotFound": "Erro Crítico: O método 'execute' não foi encontrado na definição do ritual '{className}'.",
+      "LoadFailed": "Não foi possível carregar o arquivo do ritual: {file}."
+    },
+    "Execution": {
+      "Standard": "Padrão",
+      "Complete": "Completa"
+    },
+    "Range": {
+      "Touch": "Toque",
+      "Short": "Curto"
+    },
+    "Target": {
+      "Weapon": {
+        "Melee": "{number} arma(s) corpo a corpo",
+        "Ranged": "{number} arma(s) à distância"
+      }
+    },
+    "Duration": {
+      "Sustained": "Sustentada",
+      "Scene": "Cena"
+    },
+    "Elements": {
+      "blood": "Sangue",
+      "death": "Morte",
+      "energy": "Energia",
+      "fear": "Medo",
+      "knowledge": "Conhecimento"
+    }
   }
 }

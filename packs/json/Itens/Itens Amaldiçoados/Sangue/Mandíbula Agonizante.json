@@ -1,0 +1,49 @@
+{
+  "folder": "I7FDEP6phL65CNuF",
+  "name": "Mandíbula Agonizante",
+  "type": "generalEquipment",
+  "_id": "w4PdOcTJiCItJME6",
+  "img": "imagens/itens/Cranio%20Quebrado.png",
+  "system": {
+    "description": "<p>A parte inferior de um crânio, ainda com músculos e símbolos pintados com sangue, que emite sons perturbadores, como se estivesse sendo torturado. </p><p>Você pode gastar uma ação padrão para pressionar a mandíbula, fazendo-a sentir mais dor, e arremessá-la em um ponto à sua escolha em alcance médio. O item começará a agonizar e gritar muito alto, acobertando qualquer outro som em um raio de 30 metros até o fim da cena. Se usar esse item em uma cena de furtividade (p. 92), você passa automaticamente em um teste para distrair. </p><p>Criaturas de Sangue, em especial, são fortemente atraídas pelos gritos da mandíbula, e precisam passar em um teste de Vontade (DT 35) para evitar ir até ela e comê-la. </p><p>No fim da cena, a mandíbula para de gritar, volta a agonizar baixinho e só pode ser usada novamente após descansar por uma cena.</p><p></p>",
+    "weight": 1,
+    "category": "2",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "type": "",
+    "quantity": 1
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "battery": {
+        "uses": false,
+        "isPotent": false
+      },
+      "itemType": "none",
+      "curse": {
+        "active": true,
+        "element": "Blood"
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1761254825448,
+    "modifiedTime": 1761255030898,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!w4PdOcTJiCItJME6"
+}

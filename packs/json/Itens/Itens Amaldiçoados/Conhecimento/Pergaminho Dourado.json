@@ -1,0 +1,49 @@
+{
+  "folder": "HjN9XGdls2LOiYKZ",
+  "name": "Pergaminho Dourado",
+  "type": "generalEquipment",
+  "_id": "ublYaMxmKJ4S69t3",
+  "img": "imagens/itens/Pergaminho%20Dourado.png",
+  "system": {
+    "description": "<p>Um pergaminho enrolado com hastes duplas de madeira. Ele emite um leve brilho dourado. Em seu interior, diversos símbolos e sigilos indecifráveis estão escritos com tinta preta.</p><p>Você pode gastar uma ação padrão para encarar os sigilos do Outro Lado inscritos no pergaminho, recebendo 5 PE temporários até o fim da cena.</p><p>Sempre que usa este item, você deve fazer um teste de Ocultismo (DT 15 + 5 por uso adicional no mesmo dia). Se falhar, o pergaminho se desfaz.</p><p></p>",
+    "weight": 1,
+    "category": "2",
+    "using": {
+      "state": true,
+      "class": "fas"
+    },
+    "type": "",
+    "quantity": 1
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "DBvflgYxNIsRHPlj": 3
+  },
+  "flags": {
+    "paranormal-enhancements": {
+      "battery": {
+        "uses": false,
+        "isPotent": false
+      },
+      "itemType": "none",
+      "curse": {
+        "active": true,
+        "element": "Knowledge"
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1762396323732,
+    "modifiedTime": 1762397405591,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!items!ublYaMxmKJ4S69t3"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "KZFMHYB3FrbWFXo3",
+  "name": "Táticas",
+  "color": null,
+  "sorting": "a",
+  "_id": "BQEAWbng1aaeyf6h",
+  "description": "",
+  "sort": -100000,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "ordemparanormal",
+    "systemVersion": "7.2.2",
+    "createdTime": 1759347731358,
+    "modifiedTime": 1759347731358,
+    "lastModifiedBy": "DBvflgYxNIsRHPlj"
+  },
+  "_key": "!folders!BQEAWbng1aaeyf6h"
+}
