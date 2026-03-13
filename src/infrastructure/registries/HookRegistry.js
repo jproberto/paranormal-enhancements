@@ -27,9 +27,6 @@ export class HookRegistry {
 
   static _registerChatHooks() {
       FoundryAdapter.registerHook("renderChatMessage", ChatService.renderChatCardHandler);
-      FoundryAdapter.registerHook("preCreateChatMessage", (message, data, options, userId) => {
-          return ChatService.handleRitualPreCreate(message, data, options, userId);
-      });
   }
 
   static _registerRollHooks() {

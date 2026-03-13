@@ -57,7 +57,7 @@ export class CurseController {
 
         await FoundryAdapter.createChatMessage({
             user: game.user.id,
-            speaker: FoundryAdapter.getSpeaker({ actor: actor }),
+            speaker: FoundryAdapter.getSpeakerActor({ actor: actor }),
             content: `<div>${messageContent}</div>`
         });
     }
